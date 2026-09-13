@@ -1,0 +1,61 @@
+        E CAFE HIMACHAL
+
+        SERVICE CHARGE & PRICE LIST
+
+S. No.                                                    Service Name  Price
+   1    Bus Booking ­ All India                                          99
+   2    Domestic PCC Apply Service                                       399
+   3    Link Mobile Number with Ration Card                              99
+   4    Gulf Medical Application Service                                 399
+   5    DSC Apply Service                                                999
+   6    Bio Data Making ­ Sea Jobs                                       499
+   7    Food Licence ­ New & Renewal                                     999
+   8    Resume Making Service                                            199
+   9    GST Registration                                                1,499
+  10    Ayushman Card Service                                            199
+  11    ISO Apply Service                                               1,999
+  12    ABHA Card Apply Service                                          99
+  13    ABC Card Apply Service                                           99
+  14    Link Mobile Number with RC                                       99
+  15    High Security Registration Plate (HSRP) ­ HP                     199
+  16    Passing Fee Service                                              199
+  17    Him Access Card Service                                          99
+  18    MV Tax / Road Tax / Green Tax Service                            299
+  19    EPFO Service                                                     499
+  20    APAAR Card Apply Service                                         99
+  21    3rd Party Bike Insurance                                         899
+  22    Learning Licence Apply                                           399
+  23    School & College Admission                                       199
+  24    HP Bus Conductor Licence Apply                                   299
+  25    Voter Card Apply Service                                         199
+  26    Tatkal Rail Booking                                              299
+  27    Old Age Pension ­ HP                                             99
+  28    Kedarnath Booking Service                                        199
+  29    Learning Licence Renewal                                         99
+  30    Hotel Booking ­ All India                                        299
+  31    Trademark Apply                                                 4,999
+  32    International Air Booking                                        399
+  33    DEB ID Apply Service                                             99
+  34    Passport Service                                                2,999
+  35    Rail Booking ­ All India                                         199
+  36    HimCare Card ­ New & Renewal                                    1,099
+  37    School & College Scholarship Apply Service                       199
+  38    ITR Service ­ Income Tax Return Filing                           499
+  39    e-Shram Card Service                                             199
+  40    International PCC Apply Service                                  999
+  41    MSME Certificate                                                 499
+  42    Third Party Motor Insurance / Car Insurance                     2,499
+  43    Bio Data Making Service                                          199
+  44    Link Mobile Number with Driving Licence                          99
+  45    Cricket Stadium Ticket Booking Service                           199
+  46    Employment Exchange Registration                                 199
+  47    IEC Code Apply                                                  1,999
+  48    Check Post Tax ­ Apply Online                                    199
+  49    Shop Registration Service                                        199
+  50    HP Senior Citizens Card Apply                                    199
+  51    Dubai Tourist Visa                                               999
+  52    GeM Registration                                                 499
+  53    PAN Card Service                                                 299
+  54    Aadhaar-PAN Link Service                                        1,099
+  55    Dubai Tourist Visa                                               999
+

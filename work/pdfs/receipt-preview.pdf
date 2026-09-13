@@ -1,0 +1,60 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 1105 >>
+stream
+BT /F2 22 Tf 56 790 Td (eCafeHimachal) Tj ET
+BT /F1 10 Tf 56 759 Td (Online Services Made Simple) Tj ET
+BT /F1 10 Tf 56 740 Td (-) Tj ET
+BT /F2 18 Tf 56 721 Td (PAYMENT RECEIPT) Tj ET
+BT /F1 10 Tf 56 694 Td (-) Tj ET
+BT /F1 10 Tf 56 675 Td (Receipt Number) Tj ET
+BT /F2 12 Tf 56 656 Td (ECH-REC-2026-123456) Tj ET
+BT /F1 10 Tf 56 635 Td (Order Number) Tj ET
+BT /F2 12 Tf 56 616 Td (ECH-ORD-2026-123456) Tj ET
+BT /F1 10 Tf 56 595 Td (Date) Tj ET
+BT /F2 12 Tf 56 576 Td (12 September 2026) Tj ET
+BT /F1 10 Tf 56 555 Td (Buyer) Tj ET
+BT /F2 12 Tf 56 536 Td (Demo Customer) Tj ET
+BT /F1 10 Tf 56 515 Td (Buyer Type) Tj ET
+BT /F2 12 Tf 56 496 Td (CUSTOMER) Tj ET
+BT /F1 10 Tf 56 475 Td (Service) Tj ET
+BT /F2 12 Tf 56 456 Td (SSC GD Form) Tj ET
+BT /F1 10 Tf 56 435 Td (Amount Paid) Tj ET
+BT /F2 12 Tf 56 416 Td (Rs. 100) Tj ET
+BT /F1 10 Tf 56 395 Td (Payment Status) Tj ET
+BT /F2 12 Tf 56 376 Td (SUCCESS) Tj ET
+BT /F1 10 Tf 56 355 Td (Razorpay Payment ID) Tj ET
+BT /F2 12 Tf 56 336 Td (pay_demo123456) Tj ET
+BT /F1 10 Tf 56 315 Td (-) Tj ET
+BT /F1 10 Tf 56 296 Td (Thank you for choosing eCafeHimachal.) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000321 00000 n 
+0000000396 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1553
+%%EOF

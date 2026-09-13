@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { dashboard, getSettings, listCustomers, updateSettings } from '../controllers/adminController.js';
+import { allowRoles, requireAuth } from '../middleware/auth.js';
+const router = Router();
+router.use(requireAuth, allowRoles('ADMIN'));
+router.get('/dashboard', dashboard);
+router.get('/customers', listCustomers);
+router.get('/settings', getSettings);
+router.put('/settings', updateSettings);
+export default router;

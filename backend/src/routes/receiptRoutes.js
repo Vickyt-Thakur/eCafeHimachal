@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { downloadAdminReceipt, downloadMyReceipt, listAdminReceipts, listMyReceipts } from '../controllers/receiptController.js';
+import { allowRoles, requireAuth } from '../middleware/auth.js';
+const router = Router();
+router.use(requireAuth);
+router.get('/mine', allowRoles('CUSTOMER', 'PARTNER'), listMyReceipts);
+router.get('/mine/:id/pdf', allowRoles('CUSTOMER', 'PARTNER'), downloadMyReceipt);
+router.get('/admin/all', allowRoles('ADMIN'), listAdminReceipts);
+router.get('/admin/:id/pdf', allowRoles('ADMIN'), downloadAdminReceipt);
+export default router;

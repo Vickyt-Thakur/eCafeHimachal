@@ -1,0 +1,14 @@
+import { useEffect, useState } from 'react';
+import { api } from '../services/api.js';
+
+export function MemberPaymentsPage() { return <ReceiptsPage endpoint="/receipts/mine" pdfBase="/receipts/mine" title="My payments" />; }
+export function AdminReceiptsPage({ title = 'Receipts' }) { return <ReceiptsPage endpoint="/receipts/admin/all" pdfBase="/receipts/admin" title={title} />; }
+
+function ReceiptsPage({ endpoint, pdfBase, title }) {
+  const [receipts, setReceipts] = useState([]); const [message, setMessage] = useState('Loading payments…');
+  useEffect(() => { api.get(endpoint).then(({ data }) => { setReceipts(data.receipts); setMessage(''); }).catch((error) => setMessage(error.response?.data?.message || 'Unable to load payments.')); }, [endpoint]);
+  async function download(receipt) {
+    try { const response = await api.get(`${pdfBase}/${receipt.id}/pdf`, { responseType: 'blob' }); const url = URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' })); const link = document.createElement('a'); link.href = url; link.download = `${receipt.receiptNumber}.pdf`; link.click(); URL.revokeObjectURL(url); } catch (error) { setMessage(error.response?.data?.message || 'Unable to download receipt.'); }
+  }
+  return <main className="mx-auto max-w-6xl px-5 py-12"><h1 className="text-3xl font-bold text-slate-900">{title}</h1><p className="mt-2 text-slate-600">Your successful payments and downloadable receipts.</p>{message && <p className="mt-5 text-slate-600">{message}</p>}<section className="mt-7 overflow-hidden rounded-xl border border-slate-200 bg-white"><div className="overflow-x-auto"><table className="min-w-full text-left text-sm"><thead className="bg-slate-50 text-slate-600"><tr><th className="px-5 py-3">Receipt</th><th className="px-5 py-3">Service</th><th className="px-5 py-3">Buyer</th><th className="px-5 py-3">Amount</th><th className="px-5 py-3">Date</th><th className="px-5 py-3">Action</th></tr></thead><tbody>{receipts.map((receipt) => <tr key={receipt.id} className="border-t border-slate-100"><td className="px-5 py-4 font-semibold text-slate-900">{receipt.receiptNumber}<p className="mt-1 text-xs font-normal text-slate-500">{receipt.orderNumber}</p></td><td className="px-5 py-4">{receipt.serviceName}</td><td className="px-5 py-4">{receipt.buyerName}<p className="mt-1 text-xs text-slate-500">{receipt.buyerType}</p></td><td className="px-5 py-4">₹{receipt.amount}</td><td className="px-5 py-4">{new Date(receipt.date).toLocaleDateString('en-IN')}</td><td className="px-5 py-4"><button onClick={() => download(receipt)} className="font-semibold text-blue-700">Download PDF</button></td></tr>)}{receipts.length === 0 && !message && <tr><td colSpan="6" className="px-5 py-8 text-center text-slate-500">No successful payments yet.</td></tr>}</tbody></table></div></section></main>;
+}
