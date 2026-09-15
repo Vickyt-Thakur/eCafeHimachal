@@ -1,13 +1,13 @@
 # eCafeHimachal
 
-**Online Services Made Simple** — a simple digital-service platform for customers and cyber-cafe partners.
+**Online Services Made Simple** — a private digital-service platform for customers and cyber-cafe partners. eCafeHimachal is not an official government website and is not affiliated with, endorsed by, or officially connected to a government department or authority.
 
 ## Phase 1 setup
 
 ### Prerequisites
 
 - Node.js LTS
-- MongoDB Community Server running locally
+- A MongoDB Atlas cluster (no MongoDB Community Server is required)
 - VS Code
 
 ### Install dependencies
@@ -18,7 +18,7 @@ From the project root:
 npm run install:all
 ```
 
-### Configure local environment
+### Configure the environment
 
 In PowerShell, from the project root:
 
@@ -27,11 +27,17 @@ Copy-Item backend/.env.example backend/.env
 Copy-Item frontend/.env.example frontend/.env
 ```
 
-`backend/.env` defaults to a local MongoDB database named `ecafehimachal`:
+Set `backend/.env` with your MongoDB Atlas connection string and private secrets. Do not commit this file:
 
 ```env
-MONGODB_URI=mongodb://127.0.0.1:27017/ecafehimachal
+MONGODB_URI=mongodb+srv://USERNAME:PASSWORD@CLUSTER.mongodb.net/ecafehimachal
+JWT_SECRET=use_a_long_unique_random_secret
+PORT=5000
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=choose_a_strong_initial_password
 ```
+
+In MongoDB Atlas, create a database user, add your current IP address to the cluster Network Access list, and replace the placeholders above with its encoded username/password and cluster host. The database name may remain `ecafehimachal`.
 
 ### Start the app
 
@@ -41,7 +47,7 @@ From the project root:
 npm run dev
 ```
 
-Open `http://localhost:5173` for the website, then visit `http://localhost:5000/api/health` to confirm the API is connected to MongoDB.
+Open `http://localhost:5173` for the website, then visit `http://localhost:5000/api/health` to confirm the API is running. The backend prints `MongoDB Atlas Connected Successfully` before it starts accepting requests; it exits if the database is unavailable.
 
 ## Current phase scope
 
@@ -49,14 +55,14 @@ Phase 1 provides the frontend/backend foundation, MongoDB connection, secure bas
 
 ## Phase 2: authentication
 
-After copying the environment files, set a strong `JWT_SECRET`, an admin email, and an admin password in `backend/.env`. Then create the private first admin account:
+After copying the environment files, set a strong `JWT_SECRET`, an admin email, and an admin password in `backend/.env`. Then create or update the private first admin account. The seed command hashes `ADMIN_PASSWORD` with bcrypt before storing it:
 
 ```powershell
 cd backend
 npm run seed
 ```
 
-Customer registration is available at `/register`. Partner registration is available at `/partner/register`; a partner remains pending until an admin approves them in the future admin-management phase. The admin login is `/admin/login`.
+Customer registration is available at `/customer/register`; partner registration is available at `/partner/register`; a partner remains pending until an admin approves them. Separate role-specific login pages are `/customer/login`, `/partner/login`, and `/admin/login`. The backend rejects an account submitted to the wrong role-specific login endpoint.
 
 ## Phase 3: services
 

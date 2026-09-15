@@ -11,8 +11,10 @@ export function AuthProvider({ children }) {
     api.get('/auth/me').then(({ data }) => setUser(data.user)).catch(() => setUser(null)).finally(() => setCheckingSession(false));
   }, []);
 
-  async function login(identifier, password) {
-    const { data } = await api.post('/auth/login', { identifier, password });
+  async function login(identifier, password, role) {
+    const endpoint = { CUSTOMER: '/auth/login/customer', PARTNER: '/auth/login/partner', ADMIN: '/auth/login/admin' }[role];
+    if (!endpoint) throw new Error('A valid login role is required.');
+    const { data } = await api.post(endpoint, { identifier, password });
     setUser(data.user);
     return data.user;
   }

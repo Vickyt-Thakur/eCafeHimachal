@@ -37,12 +37,13 @@ export async function registerPartner(request, response, next) {
   } catch (error) { next(error); }
 }
 
-export async function login(request, response, next) {
+async function authenticate(request, response, next, requiredRole) {
   try {
     const { identifier, password } = loginSchema.parse(request.body);
     const isEmail = identifier.includes('@');
     const user = await User.findOne(isEmail ? { email: identifier.toLowerCase() } : { mobile: identifier }).select('+passwordHash');
     if (!user || !(await bcrypt.compare(password, user.passwordHash))) return response.status(401).json({ success: false, message: 'Incorrect mobile/email or password.' });
+    if (requiredRole && user.role !== requiredRole) return response.status(403).json({ success: false, message: `This account must be accessed through the ${user.role.toLowerCase()} login page.` });
     if (user.role === 'PARTNER' && user.status === 'PENDING') return response.status(403).json({ success: false, message: 'Your partner account is awaiting admin approval.' });
     if (user.status === 'SUSPENDED' || user.status === 'REJECTED') return response.status(403).json({ success: false, message: 'This account is not active. Please contact eCafeHimachal.' });
 
@@ -50,6 +51,13 @@ export async function login(request, response, next) {
     response.json({ success: true, message: 'Welcome back.', user: publicUser(user) });
   } catch (error) { next(error); }
 }
+
+// Retained for backwards-compatible API consumers. The website uses the role-specific
+// handlers below, which enforce the account role before creating a session.
+export async function login(request, response, next) { return authenticate(request, response, next); }
+export async function loginCustomer(request, response, next) { return authenticate(request, response, next, 'CUSTOMER'); }
+export async function loginPartner(request, response, next) { return authenticate(request, response, next, 'PARTNER'); }
+export async function loginAdmin(request, response, next) { return authenticate(request, response, next, 'ADMIN'); }
 
 export function logout(_request, response) {
   clearAuthCookie(response);
