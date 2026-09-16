@@ -49,6 +49,22 @@ npm run dev
 
 Open `http://localhost:5173` for the website, then visit `http://localhost:5000/api/health` to confirm the API is running. The backend prints `MongoDB Atlas Connected Successfully` before it starts accepting requests; it exits if the database is unavailable.
 
+### Deploy with Docker on EC2
+
+Install Docker and the Docker Compose plugin on the EC2 instance, then copy the project to the server. Create `backend/.env` and set the MongoDB connection, JWT secret, admin credentials, and production integrations. Do not commit this file.
+
+From the project root, set the public URL used by the backend and start the production containers:
+
+```bash
+export FRONTEND_URL=http://YOUR_EC2_PUBLIC_IP
+docker compose up -d --build
+docker compose run --rm backend npm run seed
+```
+
+Allow inbound TCP port 80 in the EC2 security group, then open `http://YOUR_EC2_PUBLIC_IP`. The admin login is at `/admin/login`. The frontend container serves the React build and proxies `/api` requests to the backend container; the backend port does not need to be publicly exposed.
+
+For a real domain, point DNS to the instance and put HTTPS in front of the nginx container. Set `FRONTEND_URL` to the HTTPS origin and keep `NODE_ENV=production` so authentication cookies are secure.
+
 ## Current phase scope
 
 Phase 1 provides the frontend/backend foundation, MongoDB connection, secure baseline middleware, environment templates, and a landing-page shell. Authentication, data models, services, payments, receipts, WhatsApp workflow, and admin features will be added in later phases.
